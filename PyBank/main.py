@@ -1,62 +1,65 @@
+#import file
+
 import os
 import csv
 
-cvspath = os.pathjoim("budget_data.csv")
+#path to the csvfile
 
-# variables
+csvpath = os.path.join('budget_data.csv')
+
+#initializing the variables 
 total_months = 0
-total_revenue = 0
-changes = []
+total_revenue =0
+changes =[]
 date_count = []
 greatest_inc = 0
 greatest_inc_month = 0
 greatest_dec = 0
 greatest_dec_month = 0
 
-# Open csv
-with open(cvspath, newline = ' ') as csvfile
-    csvreader = csv.reader(csvfile, delimeter = ",")
+# Open the CSV
+with open(csvpath, newline = '') as csvfile:
+    csvreader = csv.reader(csvfile, delimiter = ',')
     next(csvreader, None)
     row = next(csvreader)
-
-# Calculate total number of months and total total_revenue
-    previous_profit = int(roe[1])
+# calculating the total number of months and total revenue
+    previous_profit = int(row[1])
     total_months = total_months + 1
-    total_revenue = total_revenue = int(row[1])
+    total_revenue = total_revenue + int(row[1])
     greatest_inc = int(row[1])
-    greatest_inc_month = row[0])
+    greatest_inc_month = row[0]
 
-    for row in csvreader
-
+    for row in csvreader:
+ 
         total_months = total_months + 1
-        total_revenue = total_revenue + int(row{1})
+        total_revenue = total_revenue + int(row[1])
 
-        # Calculate change from current month to prior months
+        # Calculate change from this month to previous months
         change = int(row[1]) - previous_profit
         changes.append(change)
         previous_profit = int(row[1])
         date_count.append(row[0])
-
-        # greatest decrease
+        
+        #calculating the greatest increase
+        if int(row[1]) > greatest_inc:
+            greatest_inc = int(row[1])
+            greatest_inc_month = row[0]
+            
+        #calculating the greatest decrease
         if int(row[1]) < greatest_dec:
-        greatest_inc = int(row[1])
-        greatest_inc_month = row[0]
+            greatest_dec = int(row[1])
+            greatest_dec_month = row[0]  
+      
+    # calculating the average and date
+    average_change = sum(changes)/len(changes)
 
-        # greatest increase
-        if int(row[1]) > greatest_dec:
-        greatest_inc = int(row[1])
-        greatest_inc_month = row[0]
+    high = max(changes)
+    low = min(changes)
 
-# Calculate avaerage and date_count
-avearge_change = sum(changes)/len(changes)
-high = max(changes)
-low = min(changes)
-
-# print values
-print("Financial Analysis")
-print(Total Months:" =str(total_months))
-print("Total Amount:" + str(total_revenue))
-print(average_change)
-print(greatest_inc_month, max(changes))
-print(greatest_dec_month, min(changes))
+    # printing all values
+    print("Financial Analysis")
+    print("Total Months:" + str(total_months))
+    print("Total Amount:" + str(total_revenue))
+    print(average_change)
+    print(greatest_inc_month, max(changes))
 
