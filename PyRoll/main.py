@@ -13,7 +13,7 @@ with open(csvpath, 'r') as csvfile:
     for row in cvsread:
         total_votes += 1
         if row[2] in poll_data.keys():
-            pool_data[row{2]} = poll_data[row[2]] + 1
+            poll_data[row{2]} = poll_data[row[2]] + 1
             else:
                 poll_data[row[2]] = 1
 
